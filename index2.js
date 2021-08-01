@@ -84,7 +84,6 @@ function showme() {
                     now = new Date();
                     remDate = new Date(element.reminder);
                     if (element.reminder > Date()) {
-                        console.log(remDate - now);
 
                     }
                     else if (remDate - now <= 0 && remDate - now >= -2000) {
@@ -204,7 +203,7 @@ function sortTime() {
       </div>`;
     }
     else {
-        console.log("Already In That Format");
+        
         dismiss.innerHTML = `<div class="alert alert-warning alert-dismissible fade show" role="alert">
         <strong>Notes already in that order</strong> Check your selected options. <strong>Please Reload!!</strong>
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -239,7 +238,7 @@ function revSortTime() {
       </div>`;
     }
     else {
-        console.log("Already In That Format");
+        
         dismiss.innerHTML = `<div class="alert alert-warning alert-dismissible fade show" role="alert">
         <strong>Notes already in that order</strong> Check your selected options <strong>Please Reload!!</strong>
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -389,7 +388,6 @@ noteBody.addEventListener("input", () => {
 
 let colorpicker = document.getElementById("colorpicker");
 colorpicker.addEventListener("input",()=> {
-    console.log(colorpicker.value);
     document.body.style.backgroundImage = "none";
     document.body.style.backgroundColor = `${colorpicker.value}`;
 })

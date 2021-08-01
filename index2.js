@@ -114,7 +114,7 @@ function showme() {
     else {
         noteElement.innerHTML = `No notes added! Add notes by clicking <strong> "Add Note" </strong> Button`
         dismiss.innerHTML = ` <div class="alert alert-warning alert-dismissible fade show" role="alert">
-        <strong>No motes to show!! </strong> Add notes below
+        <strong>No notes to show!! </strong> Add notes below
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>

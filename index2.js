@@ -1,16 +1,12 @@
 console.log("My Project");
 showme();
-// var audio = new Audio();
-// audio.src = 'Kalimba.mp3';
-// audio.play();
-//TaKe notes tab
+
+//Take notes tab
 
 const time = document.getElementById("time");
 let currentTime;
 let noteTime;
 let j = 0;
-// let l = 0;
-// let m = 0;
 
 setInterval(`
 currentTime = new Date();
@@ -39,6 +35,9 @@ submit.addEventListener("click", () => {
 
     }
     let dateTime = document.getElementById("dateTime");
+    if (dateTime.value == "") {
+        dateTime.value = "default";
+    }
     myNoteObj["reminder"] = dateTime.value;
     notesObj.push(myNoteObj);
     localStorage.setItem("mynote", JSON.stringify(notesObj));
@@ -77,20 +76,21 @@ function showme() {
         </div>`;
     });
     notesObj.forEach((element) => {
-        if (element.reminder != "") {
+        if (element.reminder != "default") {
             let o = 0;
             function reminderAlarm() {
                 setInterval(() => {
                     now = new Date();
                     remDate = new Date(element.reminder);
                     if (element.reminder > Date()) {
+                        console.log(remDate - now);
 
                     }
                     else if (remDate - now <= 0 && remDate - now >= -2000) {
-                        alert(`${element.body} Reminder`);
+                        alert(`"${element.body}" Reminder`);
                     }
                     else if (o == 0) {
-                        alert(`${element.body} passed`);
+                        alert(`"${element.body}" Passed`);
                         o++
                     }
                     else {
@@ -114,7 +114,7 @@ function showme() {
     else {
         noteElement.innerHTML = `No notes added! Add notes by clicking <strong> "Add Note" </strong> Button`
         dismiss.innerHTML = ` <div class="alert alert-warning alert-dismissible fade show" role="alert">
-        <strong>No notes to show!! </strong> Add notes below
+        <strong>No motes to show!! </strong> Add notes below
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -203,7 +203,7 @@ function sortTime() {
       </div>`;
     }
     else {
-        
+        console.log("Already In That Format");
         dismiss.innerHTML = `<div class="alert alert-warning alert-dismissible fade show" role="alert">
         <strong>Notes already in that order</strong> Check your selected options. <strong>Please Reload!!</strong>
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -238,7 +238,7 @@ function revSortTime() {
       </div>`;
     }
     else {
-        
+        console.log("Already In That Format");
         dismiss.innerHTML = `<div class="alert alert-warning alert-dismissible fade show" role="alert">
         <strong>Notes already in that order</strong> Check your selected options <strong>Please Reload!!</strong>
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -388,6 +388,7 @@ noteBody.addEventListener("input", () => {
 
 let colorpicker = document.getElementById("colorpicker");
 colorpicker.addEventListener("input",()=> {
+    // console.log(colorpicker.value);
     document.body.style.backgroundImage = "none";
     document.body.style.backgroundColor = `${colorpicker.value}`;
 })
